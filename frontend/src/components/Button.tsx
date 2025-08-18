@@ -5,6 +5,7 @@ export interface ButtonProps {
     size: "sm" | "md" | "lg" ,
     startIcon?: ReactElement,
     endIcon?: ReactElement,
+    onClick?: React.MouseEventHandler<HTMLButtonElement>,
     text: string
 };
 
@@ -19,11 +20,13 @@ const sizeStyles = {
     "lg": "px-6 py-4"
 }
 
-const defaultStyle = "flex gap-2 p-2 border rounded-md font-normal"
+const defaultStyle = "flex gap-2 p-2 border rounded-md font-normal items-center justify-center"
 
 export default function Button(props: ButtonProps) {
-    return <button className={` ${defaultStyle} ${variantStyles[props.variant]} ${sizeStyles[props.size]} `}>
-            <p>{props.startIcon}</p>
-            <p>{props.text}</p>
+    return <div>
+    <button onClick={props.onClick} className={` ${defaultStyle} ${variantStyles[props.variant]} ${sizeStyles[props.size]} `}>
+            <div>{props.startIcon}</div>
+            <div>{props.text}</div>
             </button>
+    </div>
 }

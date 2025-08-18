@@ -30,7 +30,7 @@ export async function getContent(req: Request, res: Response) {
     try {
         const content = await Content.find({
             userId: (req as any).userId
-        });
+        }).populate('userId',"firstName _id");
 
         res.json({
             contents: content
@@ -117,7 +117,7 @@ export async function getUserContent(req: Request, res: Response) {
         }
 
         const userId = link.userId;
-        const contents = await Content.findOne({
+        const contents = await Content.find({
             userId
         })
 

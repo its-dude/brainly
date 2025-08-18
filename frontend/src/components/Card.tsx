@@ -1,4 +1,6 @@
+import { DeleteIcon } from "../icons/delete";
 import { Share } from "../icons/share";
+import { TwitterIcon } from "../icons/twitter";
 import { YoutubeIcon } from "../icons/youtube";
 
 export interface CardInterface{
@@ -9,23 +11,24 @@ export interface CardInterface{
 
 export default function Card({ title, type, link }: CardInterface) {
     return <div>
-    <div className="bg-white border rounded-md p-4 max-w-72 min-h-48 m-2 flex flex-col items-center">
+    <div className="bg-white border border-gray-300 rounded-md p-4 max-w-72 min-h-48 m-2 flex flex-col items-center bg-gray-100">
        
-        <div className="flex justify-between w-full ">
+        <div className="flex justify-between w-full items-center ">
             <div className="flex gap-2 font-semibold">
                 <div className="text-gray-500">
                    {type == "youtube" && <YoutubeIcon/>}
+                   {type == "twitter" && <TwitterIcon/>}
                 </div>
                 {title}
             </div>
             <div className="flex gap-2 text-gray-500">
                 <Share />
-                <Share />
+                <DeleteIcon/>
             </div>
         </div>
 
         <div className="p-4 ">
-            {type == "youtube" && <iframe className="w-full" src={link}
+            {type == "youtube" && <iframe className="w-full" src={link.replace("watch?v=", "embed/")}
                 title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
         </div>

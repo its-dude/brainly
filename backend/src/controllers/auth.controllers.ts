@@ -3,6 +3,7 @@ import { z, ZodError } from "zod";
 import User from "../models/user.model.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import config from "../config/config.js";
 
 const passwordSchema = z.string().refine((value) => {
     return /[A-Z]/.test(value) && /[a-z]/.test(value) && /[0-9]/.test(value) && /[^A-Za-z0-9]/.test(value) && value.length >= 8;
@@ -24,7 +25,7 @@ const signupSchema = z.object({
     userName: usernameSchema,
     password: passwordSchema
 })
-1
+
 async function signUp(req: Request, res: Response) {
     try {
 
