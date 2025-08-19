@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export function useContent() {
     const [contents, setContents] = useState([]);
-
+    const navigate = useNavigate();
      function refresh() {
          axios.get("http://localhost:3000/api/v1/user/content",{
             headers:{
@@ -11,13 +12,19 @@ export function useContent() {
             }
          })
          .then(response=>{
-            console.log(response.data)
-             setContents(response.data.contents);
+            if(response.data.contents){
+                setContents(response.data.contents);
+            } else {
+                navigate('/signin');
+            }
+         })
+         .catch( err => {
+            console.log(err.message);
          })
 
         }
 
-    useEffect( ()=>{
+    useEffect( () => {
         refresh();
 
         const interval = setInterval(() => {

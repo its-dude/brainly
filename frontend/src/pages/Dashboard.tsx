@@ -45,6 +45,9 @@ export function Dashboard({ isLogin }: { isLogin: boolean }) {
                                             alert("sharable link got deleted");
                                         }
                                     })
+                                    .catch(err => {
+                                        console.log(err.message)
+                                    })
                                 } } />
                             </div>
                         </div>

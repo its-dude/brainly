@@ -58,7 +58,7 @@ export function CreateContentModel({ open, onClose }: { open: boolean; onClose: 
                                                     Authorization: localStorage.getItem('token')
                                                 }
                                             })
-                                                .then(response => { onClose() })
+                                                .then((response) => { onClose() })
                                         }
                                     }
 
