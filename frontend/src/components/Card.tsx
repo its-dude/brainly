@@ -24,7 +24,7 @@ export default function Card({ title, type, link, onDelete, contentId }: CardInt
                 {title}
             </div>
             <div className="flex gap-2 text-gray-500">
-                <Share />
+                <Share link={link}/>
                 <DeleteIcon contentId={contentId} onDelete={onDelete}/>
             </div>
         </div>
