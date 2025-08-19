@@ -8,7 +8,7 @@ userRouter.post('/content', userAuth, postContet)
 
 userRouter.get('/content', userAuth, getContent)
 
-userRouter.delete('/content', userAuth, deleteContent)
+userRouter.delete('/content/:contentId', userAuth, deleteContent)
 
 userRouter.post("/share", userAuth, share)
 

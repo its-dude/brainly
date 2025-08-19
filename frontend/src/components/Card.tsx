@@ -6,10 +6,12 @@ import { YoutubeIcon } from "../icons/youtube";
 export interface CardInterface{
     type: "youtube"| "twitter",
     title: string,
-    link: string
+    link: string,
+    contentId:string,
+    onDelete: (contentId:string)=>void
 }
 
-export default function Card({ title, type, link }: CardInterface) {
+export default function Card({ title, type, link, onDelete, contentId }: CardInterface) {
     return <div>
     <div className="bg-white border border-gray-300 rounded-md p-4 max-w-72 min-h-48 m-2 flex flex-col items-center bg-gray-100">
        
@@ -23,7 +25,7 @@ export default function Card({ title, type, link }: CardInterface) {
             </div>
             <div className="flex gap-2 text-gray-500">
                 <Share />
-                <DeleteIcon/>
+                <DeleteIcon contentId={contentId} onDelete={onDelete}/>
             </div>
         </div>
 

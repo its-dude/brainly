@@ -45,8 +45,7 @@ export async function getContent(req: Request, res: Response) {
 
 export async function deleteContent(req: Request, res: Response) {
     try {
-        const contentId = req.body.contentId;
-
+        const contentId = req.params.contentId;
         if (!contentId) {
             return res.status(411).json({
                 message: "please enter a valid content id"

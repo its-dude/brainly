@@ -18,6 +18,21 @@ export function Dashboard({ isLogin }: { isLogin: boolean }) {
         refresh();
     }, [openModal]);
 
+    function handleDelete(contentId: string) {
+        axios.delete(`http://localhost:3000/api/v1/user/content/${contentId}`,{
+            headers:{
+                Authorization: localStorage.getItem('token')
+            }
+        } )
+        .then((response) => {
+            alert(response.data.message);
+            refresh();
+        })
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }
+
     return <div className="bg-gray-200 w-screen h-screen overflow-x-hidden">
         {isLogin === false ? (
             <>
@@ -53,10 +68,13 @@ export function Dashboard({ isLogin }: { isLogin: boolean }) {
                         </div>
 
                         <div className="flex gap-4 flex-wrap">
-                           { contents.map(({title, type, link}) => <Card
+                           { contents.map(({title, type, link, _id}) => <Card
+                            key = {_id}
                             title={title} 
                             type={type} 
-                            link={link} 
+                            link={link}
+                            contentId={_id}
+                            onDelete={handleDelete}
                             />      
                           )}
                         </div>
