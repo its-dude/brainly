@@ -2,8 +2,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+type content = {
+    title: string;
+    link: string;
+    type: "youtube" | "twitter";
+    _id: string
+}
+
 export function useContent() {
-    const [contents, setContents] = useState([]);
+    const [contents, setContents] = useState<content[]>([]);
     const navigate = useNavigate();
      function refresh() {
          axios.get("http://localhost:3000/api/v1/user/content",{

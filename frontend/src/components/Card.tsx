@@ -13,7 +13,7 @@ export interface CardInterface{
 
 export default function Card({ title, type, link, onDelete, contentId }: CardInterface) {
     return <div>
-    <div className="bg-white border border-gray-300 rounded-md p-4 max-w-72 min-h-48 m-2 flex flex-col items-center bg-gray-100">
+    <div className="bg-white border border-gray-300 rounded-md p-4 max-w-72 min-h-48 max-h-[max-content] m-2 flex flex-col items-center bg-gray-100">
        
         <div className="flex justify-between w-full items-center ">
             <div className="flex gap-2 font-semibold">
@@ -30,7 +30,7 @@ export default function Card({ title, type, link, onDelete, contentId }: CardInt
         </div>
 
         <div className="p-4 ">
-            {type == "youtube" && <iframe className="w-full" src={link.replace("watch?v=", "embed/")}
+            {type == "youtube" && <iframe className="w-full" src={link.replace("watch?v=", "embed/").replace(/&.*/,"")}
                 title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
         </div>

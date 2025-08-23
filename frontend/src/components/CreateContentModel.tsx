@@ -6,15 +6,15 @@ import { Input } from "./Input";
 
 type contentType = "youtube" | "twitter";
 
-export function CreateContentModel({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function CreateContentModel({ open, onClose }: { open: boolean; onClose:()=>void}) {
     const [title, setTitle] = useState("");
     const [link, setLink] = useState("");
     const [type, setType] = useState<contentType>("youtube");
     return (
         (open &&
-            <div className="content w-screen h-screen bg-slate-800 fixed top-0 left-0 opacity-75">
-                <div className="w-full h-full opacity-100 flex justify-center items-center ">
-                    <span className="opacity-100 bg-white text-black p-4 border rounded-xl  ">
+            <div className="absolute z-40 content bg-slate-800 bg-gray-100 inset-0  ">
+                <div className="w-full h-full  flex justify-center items-center ">
+                    <span className="bg-white text-black p-4 border rounded-xl  ">
                         <div className="flex justify-end">
                             <div onClick={onClose} >
                                 <CrossIcon />

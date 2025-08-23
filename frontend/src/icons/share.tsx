@@ -1,10 +1,7 @@
-export interface shareProps {
-   
-}
 
-export function Share({link}: {link: string}) {
+export function Share({link}: {link?: string}) {
     return <div className="cursor-pointer hover:text-gray-800" onClick={async()=>{
-        await navigator.clipboard.writeText(link)
+        await navigator.clipboard.writeText(link as string)
         alert("content link copied to clipboard");
     }}>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">

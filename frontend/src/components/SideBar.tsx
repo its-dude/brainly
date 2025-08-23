@@ -4,7 +4,9 @@ import { TwitterIcon } from "../icons/twitter"
 import { DocsIcon } from "../icons/docs"
 
 export function SideBar() {
-    return <div className="flex flex-col flex-[1] p-2 h-screen border bg-gray-100">
+    const iconNameStyle = "cursor-pointer hover:text-gray-800";
+
+    return <div className="flex flex-col w-72  p-2 h-screen border bg-gray-100 fixed left-0 top-0">
 
         <div className="flex gap-2 items-center text-3xl mb-8">
             <div className="text-purple-800 ">
@@ -15,17 +17,17 @@ export function SideBar() {
 
         <div className="flex gap-2 items-center ml-4 mb-4 text-gray-600">
             <YoutubeIcon />
-            <div>YouTube</div>
+            <div className={iconNameStyle}>YouTube</div>
         </div>
 
         <div className="flex gap-2 items-center ml-4 mb-4 text-gray-600">
             <TwitterIcon />
-            <div>Twitter</div>
+            <div className={iconNameStyle}>Twitter</div>
         </div>
 
         <div className="flex gap-2 items-center ml-4 mb-4 text-gray-600">
          <DocsIcon/>
-         Documents
+         <div className={iconNameStyle}>Documents</div>
         </div>
 
     </div>
